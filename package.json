@@ -6,7 +6,8 @@
   "license": "",
   "author": "",
   "scripts": {
-    "build": "parcel build index.html",
+    "deploy": "gh-pages -d dist",
+    "build": "parcel build index.html --public-url ./",
     "dev": "parcel index.html --open",
     "start": "npm run build && npm run dev",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -25,9 +26,5 @@
     "general": "0.0.3",
     "jquery": "^3.5.1",
     "owl.carousel": "^2.3.4"
-  }
-}
-  "devDependencies": {
-    "parcel-bundler": "^1.12.4"
   }
 }
