@@ -1,18 +1,18 @@
-// const container = document.querySelector('#map');
-//
-//
-//   yamaps.map = new ymaps.Map(container, {
-//     center: [55.69, 37.63],
-//     zoom: 12,
-//     controls: ['zoomControl'],
-//     behaviors: ['drag']
-//   });
-
+const container = document.querySelector('#map');
+const interactiveMap = require('./Map')
+const events = require('./events')
 ymaps.ready(init);
 
 function init() {
-  let map = new ymaps.Map('map', {
+  const coords = interactiveMap.geoLocation();
+  container.innerHTML="";
+  ymaps.map = new ymaps.Map(container, {
     center: [55.69, 37.63],
     zoom: 12,
+    controls: ['zoomControl'],
+    behavior: ['drag']
   });
+  Map.clusterer();
+
+  events.click();
 }
