@@ -9,18 +9,29 @@ function geoLocation () {
     })
   }
 function openBalloon (coords) {
-  ymaps.map.balloon.open(coords, 'Загрузка...', { closeButton: false });
+  ymaps.map.balloon.open(coords, 'Загрузка..', { closeButton: false });
+
 
   // const comments = api.getPlacmark(coords);
-  const address = geoCoder(coords);
-  const data = {
-    address,
-    coords
-  };
+  geoCoder(coords)
+    .then(function (address) {
+      const data = {
+        address,
+        coords,
+        comments: [
+    { name: 'Сергей Мелюков', place: 'Красный куб', date: '12.12.2015', text: 'Ужасное место! Кругом зомби!!!!' },
+    { name: 'svetlana', place: 'Шоколадница', date: '13.12.2015', text: 'Очень хорошее место!' },
+    { name: 'Stelios Baglaridis', place: 'Кафе-бар "Calypso"', date: '20.10.2019', text: 'Очень хорошее место!' },
+        ]
+      };
 
 
-  ymaps.map.balloon.open(coords, data, { layout: 'my#customBalloonLayout' });
-}
+      ymaps.map.balloon.open(coords, data, { layout: 'my#customBalloonLayout' });
+    });
+
+  }
+
+
 
 function clusterer () {
   ymaps.clusterer = new ymaps.Clusterer({
@@ -33,13 +44,25 @@ function clusterer () {
 
 ymaps.map.geoObjects.add(ymaps.clusterer)
 }
+
 function createPlacemarks (placemarks = {}) {
   for (let placemark in placemarks) {
-    // const coords = placemark.split(",");
-    const data = placemarks [placemark];
+    const coords = placemark.split(",");
+    const data = placemarks[placemark];
 
-    ymaps.clusterer.add(new ymaps.Placemark(coords))
+    ymaps.clusterer.add(new ymaps.Placemark(coords, data, placemarkIcon))
   }
+}
+
+function map (coords, container) {
+  container.innerHTML = "";
+
+  ymaps.map = new ymaps.Map(container, {
+    center: coords,
+    zoom: 12,
+    controls: ['zoomControl'],
+    behaviors: ['drag']
+  });
 }
 
 function geoCoder (coords) {
@@ -55,5 +78,7 @@ module.exports = {
   geoLocation,
   clusterer,
   openBalloon,
-  geoCoder
+  geoCoder,
+  createPlacemarks,
+  map
 }
