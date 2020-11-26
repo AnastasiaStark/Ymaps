@@ -38,12 +38,15 @@ ymaps.layout.storage.add('my#customBalloonLayout',balloonTemplate);
         });
       });
 
-    const placemarks = API.getPlacmarks();
+    API.getPlacmarks()
+      .then(function (placemarks){
+        interactiveMap.clusterer();
+        interactiveMap.createPlacemarks(placemarks)
 
-    interactiveMap.clusterer();
-    interactiveMap.createPlacemarks(placemarks)
+        events.click();
+      });
 
-    events.click();
+
   } catch (error) {
     console.log(error);
   }

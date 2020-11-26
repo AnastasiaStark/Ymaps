@@ -25,17 +25,17 @@
     margin-left: 10px;
   }
 
-  &__header-close {
-    color: #ffffff;
-    font-size: 2.8125rem;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-    position: absolute;
-    top:0%;
-    right: 5%;
-    cursor: pointer;
-  }
+  //&__header-close {
+  //  color: #ffffff;
+  //  font-size: 2.8125rem;
+  //  -webkit-transform: rotate(45deg);
+  //  -ms-transform: rotate(45deg);
+  //  transform: rotate(45deg);
+  //  position: absolute;
+  //  top:0%;
+  //  right: 5%;
+  //  cursor: pointer;
+  //}
 
 
   &__content {
@@ -92,6 +92,17 @@
     padding-right: 5px;
   }
 }
+.review-close {
+  color: #ffffff;
+    font-size: 2.8125rem;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    position: absolute;
+    top:1%;
+    right: 5%;
+    cursor: pointer;
+  }
 
 .form {
   display: flex;

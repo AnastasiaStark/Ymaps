@@ -33,7 +33,7 @@
     <div class="arrow" style="position: absolute; left: 50%; transform: translateX(-50%); width: 40px;bottom: 0; height: 40px;"></div>
     $[[options.contentLayout observeSize minWidth=235 maxWidth=235 maxHeight=350]]
     <div class="popover__header">
-      <span class="popover__header-close" id="popover__header-close" >+</span>
+<!--      <span class="popover__header-close" id="popover__header_close" >+</span>-->
       <div class="popover__col">
         <i class="fas fa-map-marker-alt"></i>
         {% if properties.address %}
@@ -42,7 +42,7 @@
         <div class="popover__address">$[address]</div>
         {% endif %}
       </div>
-      <button type="button" data-role="review-close" class="fas fa-times close"></button>
+      <button type="button" data-role="review-close" class="review-close">+</button>
     </div>
     <div class="popover__content">
       <div class="comments">

@@ -17,7 +17,23 @@ function OnGeoObjectsClick (e) {
 }
 
 function onDomClick (e) {
-  console.log('onDomClick');
+  e.preventDefault();
+  switch (e.target.dataset.role) {
+    case 'review-close':
+      ymaps.map.balloon.close();
+      break;
+    case 'clusterer-link':
+      const coords = e.target.dataset.coords.split(",");
+      interactiveMap.openBalloon(coords)
+      break;
+    case 'review-submit':
+      // const response = await dom.getForm();
+
+      if (response) {
+        interactiveMap.createPlacemarks(response)
+      }
+      break;
+  }
 }
 
 function click () {
